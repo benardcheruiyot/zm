@@ -9,4 +9,4 @@ services:
       - key: NODE_ENV
         value: production
       - key: CORS_ORIGIN
-        sync: false   # set manually in Render dashboard to your Vercel URL
+        value: https://ecocashverification.vercel.app
