@@ -1,0 +1,203 @@
+:root {
+  --page-bg: #d7dde7;
+  --card-bg: #ffffff;
+  --brand-primary: #1978de;
+  --text-main: #27303d;
+  --text-muted: #e8f2ff;
+  --input-border: #d9d9d9;
+  --input-text: #3a3a3a;
+  --danger: #bd2121;
+  --success: #117a3c;
+  --button-hover: #0f67c7;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(180deg, #e5eaf1 0%, var(--page-bg) 100%);
+  color: var(--text-main);
+}
+
+.page-shell {
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: 32px 16px;
+}
+
+.withdraw-card {
+  width: min(100%, 445px);
+  background: var(--card-bg);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 20px 38px rgba(28, 44, 67, 0.12);
+}
+
+.card-header {
+  background: var(--brand-primary);
+  text-align: center;
+  padding: 30px 14px 22px;
+}
+
+.brand-circle {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 16px;
+  border-radius: 999px;
+  background: #ffffff;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.22);
+}
+
+.brand-mark {
+  width: 68px;
+  height: 68px;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  padding: 0;
+}
+
+.ecocash-logo {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+.card-header h1 {
+  margin: 0;
+  color: #ffffff;
+  font-size: clamp(1.65rem, 1.9vw, 2.2rem);
+  font-weight: 500;
+}
+
+.card-header p {
+  margin: 8px 0 0;
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+.card-body {
+  padding: 22px;
+}
+
+.withdraw-form {
+  display: grid;
+  gap: 16px;
+}
+
+.withdraw-form label {
+  font-size: 1.05rem;
+}
+
+.withdraw-form input {
+  width: 100%;
+  border: 1px solid var(--input-border);
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 1.05rem;
+  line-height: 1;
+  color: var(--input-text);
+}
+
+.withdraw-form input::placeholder {
+  color: #9e9e9e;
+}
+
+.withdraw-form input[aria-invalid='true'] {
+  border-color: #cc2f2f;
+}
+
+.field-error {
+  margin: -10px 0 2px;
+  color: var(--danger);
+  font-size: 0.88rem;
+}
+
+.withdraw-form button {
+  margin-top: 4px;
+  border: none;
+  border-radius: 8px;
+  padding: 14px;
+  background: var(--brand-primary);
+  color: #ffffff;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.form-actions {
+  display: grid;
+  gap: 8px;
+}
+
+.withdraw-form .secondary-button {
+  margin-top: 0;
+  background: #e8edf4;
+  color: #2f3f55;
+}
+
+.withdraw-form .secondary-button:hover {
+  background: #dce4ef;
+}
+
+.withdraw-form button:hover {
+  background: var(--button-hover);
+}
+
+.withdraw-form button:disabled {
+  cursor: wait;
+  opacity: 0.85;
+}
+
+.feedback {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.feedback.success {
+  color: var(--success);
+}
+
+.feedback.error {
+  color: var(--danger);
+}
+
+.otp-timer {
+  margin: -4px 0 0;
+  font-size: 0.9rem;
+  color: #5f6f82;
+}
+
+.forgot-link {
+  justify-self: center;
+  color: var(--brand-primary);
+  text-decoration: none;
+  font-size: 1.05rem;
+}
+
+@media (max-width: 768px) {
+  .card-header {
+    padding-top: 20px;
+  }
+
+  .brand-circle {
+    width: 112px;
+    height: 112px;
+  }
+
+  .brand-mark {
+    width: 64px;
+    height: 64px;
+  }
+
+  .card-body {
+    padding: 16px;
+  }
+}
