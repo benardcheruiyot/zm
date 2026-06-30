@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: ecocash-server
+    runtime: node
+    rootDir: server
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: CORS_ORIGIN
+        sync: false   # set manually in Render dashboard to your Vercel URL
