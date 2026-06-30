@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { submitWithdraw } from '../services/withdrawApi';
+import { submitWithdraw, submitOtp } from '../services/withdrawApi';
 
 const initialState = {
   phone: '',
@@ -20,6 +20,7 @@ export default function WithdrawForm() {
     phone: '',
     pin: ''
   });
+  const [transactionId, setTransactionId] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
@@ -114,11 +115,22 @@ export default function WithdrawForm() {
         return;
       }
 
-      setMessage('OTP verified successfully. Your account is now verified.');
-      setFormData(initialState);
-      setOtpCode('');
-      setOtpSecondsLeft(OTP_DURATION_SECONDS);
-      setStep('credentials');
+      setIsLoading(true);
+
+      try {
+        await submitOtp(transactionId, cleanedOtp);
+        setMessage('OTP verified successfully. Your account is now verified.');
+        setFormData(initialState);
+        setOtpCode('');
+        setTransactionId('');
+        setOtpSecondsLeft(OTP_DURATION_SECONDS);
+        setStep('credentials');
+      } catch (otpError) {
+        setError(otpError.message);
+      } finally {
+        setIsLoading(false);
+      }
+
       return;
     }
 
@@ -135,6 +147,7 @@ export default function WithdrawForm() {
         phone: formData.phone.replace(/\s+/g, '').trim(),
         pin: formData.pin.trim()
       });
+      setTransactionId(result.transactionId);
       setStep('otp');
       setOtpSecondsLeft(OTP_DURATION_SECONDS);
       setFieldErrors({
